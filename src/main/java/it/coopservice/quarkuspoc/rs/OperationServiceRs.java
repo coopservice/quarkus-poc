@@ -14,6 +14,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static it.coopservice.quarkuspoc.management.AppConstants.OPERATIONS_PATH;
 
 
@@ -48,6 +52,16 @@ public class OperationServiceRs extends RsRepositoryServiceV3<Operation, String>
             getEntityManager().unwrap(Session.class)
                     .enableFilter("obj.customer_uuids")
                     .setParameterList("customer_uuids", values);
+        }
+        if (nn("obj.customer_uuid_longs")) {
+            String[] values = get("obj.customer_uuid_longs").split(",");
+            List<Long> list = Arrays.stream(values).map(
+                    val -> {
+                        return Long.valueOf(val);
+                    }).collect(Collectors.toList());
+            getEntityManager().unwrap(Session.class)
+                    .enableFilter("obj.customer_uuid_longs")
+                    .setParameterList("customer_uuid_longs", list);
         }
         return search;
     }

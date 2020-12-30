@@ -17,6 +17,9 @@ import javax.persistence.*;
 @FilterDef(name = "obj.customer_uuids", parameters = @ParamDef(name = "customer_uuids", type = "string"))
 @Filter(name = "obj.customer_uuids", condition = "customer_uuid IN (:customer_uuids) ")
 
+@FilterDef(name = "obj.customer_uuid_longs", parameters = @ParamDef(name = "customer_uuid_longs", type = "long"))
+@Filter(name = "obj.customer_uuid_longs", condition = "customer_uuid_long IN (:customer_uuid_longs) ")
+
 public class Operation extends PanacheEntityBase {
 
     @GeneratedValue(generator = "uuid")
@@ -26,5 +29,6 @@ public class Operation extends PanacheEntityBase {
     public String uuid;
     public String name;
     public String customer_uuid;
+    public Long customer_uuid_long;
 
 }
