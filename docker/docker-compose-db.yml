@@ -4,9 +4,9 @@ services:
   postgresql:
     image: postgres:11
     environment:
-      POSTGRES_PASSWORD: waste-tracing
-      POSTGRES_USER: waste-tracing
-      POSTGRES_DB: waste-tracing
+      POSTGRES_PASSWORD: quarkuspoc
+      POSTGRES_USER: quarkuspoc
+      POSTGRES_DB: quarkuspoc
     ports:
       - '5432:5432'
   pgadmin4:
